@@ -1,0 +1,32 @@
+<div [hidden]="submitted">
+  <div class="container">
+    <h1>註冊</h1>
+    <form (ngSubmit)="onSubmit()" #signupForm="ngForm">
+      <div class="form-group">
+        <label for="username">用戶名稱</label>
+        <input type="text" placeholder="輸入你的用戶名稱‧‧‧" class="form-control" id="username"
+        required minlength="4" [(ngModel)]="user.username" name="username" #a="ngModel">
+        <div *ngIf="a.invalid && (a.dirty || a.touched)" class="alert alert-danger">
+          <div *ngIf="a.errors.required">用戶名稱是必須的。</div>
+          <div *ngIf="a.errors.minlength">用戶名稱長度需大於4。</div>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="password">密碼</label>
+        <input type="password" placeholder="輸入你的密碼‧‧‧" class="form-control" id="password"
+        required minlength="4" [(ngModel)]="user.password" name="password" #b="ngModel">
+        <div *ngIf="b.invalid && (b.dirty || b.touched)" class="alert alert-danger">
+            <div *ngIf="b.errors.required">密碼是必須的。</div>
+            <div *ngIf="b.errors.minlength">密碼長度需大於4。</div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-success" [disabled]="!signupForm.form.valid">註冊</button>
+    </form>
+  </div>
+</div>
+
+<div [hidden]="!submitted">
+註冊成功！
+</div>

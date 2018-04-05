@@ -1,0 +1,10 @@
+<nav class="navbar navbar-light bg-light">
+    <form class="form-inline my-2 my-lg-0">
+        <button class="btn btn-outline-primary" type="button" (click)="form='sign'">註冊</button>
+        <button class="btn btn-outline-secondary mx-2" type="button" (click)="form='login'">登入</button>
+    </form>
+</nav>
+<div [ngSwitch]="form">
+    <app-add-user-form *ngSwitchCase="'sign'"></app-add-user-form>
+    <app-login-in-form *ngSwitchCase="'login'"></app-login-in-form>
+</div>
